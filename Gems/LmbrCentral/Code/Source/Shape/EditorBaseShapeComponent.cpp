@@ -90,6 +90,10 @@ namespace LmbrCentral
         m_visibleInEditor = visible;
     }
 
+    void EditorBaseShapeComponent::SetVisibleInGame(bool visible){
+        m_visibleInGameView = visible;
+    }
+
     void EditorBaseShapeComponent::SetShapeColor(const AZ::Color& shapeColor)
     {
         m_shapeColor = shapeColor;
@@ -139,6 +143,7 @@ namespace LmbrCentral
     {
         m_shapeConfig = shapeConfig;
     }
+
 
     AZ::Aabb EditorBaseShapeComponent::GetEditorSelectionBoundsViewport([[maybe_unused]] const AzFramework::ViewportInfo& viewportInfo)
     {
