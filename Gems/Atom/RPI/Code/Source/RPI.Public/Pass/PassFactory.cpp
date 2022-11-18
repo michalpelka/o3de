@@ -23,6 +23,7 @@
 #include <Atom/RPI.Public/Pass/Specific/MSAAResolveFullScreenPass.h>
 #include <Atom/RPI.Public/Pass/Specific/EnvironmentCubeMapPass.h>
 #include <Atom/RPI.Public/Pass/Specific/RenderToTexturePass.h>
+#include <Atom/RPI.Public/Pass/Specific/RenderToTexturePassRGBD.h>
 #include <Atom/RPI.Public/Pass/Specific/SelectorPass.h>
 
 #include <Atom/RPI.Reflect/Pass/PassAsset.h>
@@ -71,6 +72,8 @@ namespace AZ
             AddPassCreator(Name("EnvironmentCubeMapPass"), &EnvironmentCubeMapPass::Create);
             AddPassCreator(Name("RenderToTexturePass"), &RenderToTexturePass::Create);
             AddPassCreator(Name("SelectorPass"), &SelectorPass::Create);
+            AddPassCreator(Name("RenderToTexturePassRGBD"), &RenderToTexturePassRGBD::Create);
+
         }
 
         PassFactory::CreatorIndex PassFactory::FindCreatorIndex(Name passClassName)

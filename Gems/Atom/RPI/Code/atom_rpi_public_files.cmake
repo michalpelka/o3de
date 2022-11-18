@@ -82,6 +82,7 @@ set(FILES
     Include/Atom/RPI.Public/Pass/Specific/EnvironmentCubeMapPass.h
     Include/Atom/RPI.Public/Pass/Specific/MSAAResolveFullScreenPass.h
     Include/Atom/RPI.Public/Pass/Specific/RenderToTexturePass.h
+    Include/Atom/RPI.Public/Pass/Specific/RenderToTexturePassRGBD.h
     Include/Atom/RPI.Public/Pass/Specific/SelectorPass.h
     Include/Atom/RPI.Public/Pass/Specific/SwapChainPass.h
     Include/Atom/RPI.Public/Shader/Shader.h
@@ -160,6 +161,7 @@ set(FILES
     Source/RPI.Public/Pass/Specific/EnvironmentCubeMapPass.cpp
     Source/RPI.Public/Pass/Specific/MSAAResolveFullScreenPass.cpp
     Source/RPI.Public/Pass/Specific/RenderToTexturePass.cpp
+    Source/RPI.Public/Pass/Specific/RenderToTexturePassRGBD.cpp
     Source/RPI.Public/Pass/Specific/SelectorPass.cpp
     Source/RPI.Public/Pass/Specific/SwapChainPass.cpp
     Source/RPI.Public/Shader/Shader.cpp

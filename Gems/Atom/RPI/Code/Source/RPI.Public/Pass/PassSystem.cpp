@@ -34,6 +34,7 @@
 #include <Atom/RPI.Reflect/Pass/FullscreenTrianglePassData.h>
 #include <Atom/RPI.Reflect/Pass/EnvironmentCubeMapPassData.h>
 #include <Atom/RPI.Reflect/Pass/RenderToTexturePassData.h>
+#include <Atom/RPI.Reflect/Pass/RenderToTexturePassRGBDData.h>
 #include <Atom/RPI.Reflect/Pass/PassAsset.h>
 #include <Atom/RPI.Reflect/Pass/PassData.h>
 #include <Atom/RPI.Reflect/Pass/PassTemplate.h>
@@ -78,6 +79,8 @@ namespace AZ
             FullscreenTrianglePassData::Reflect(context);
             EnvironmentCubeMapPassData::Reflect(context);
             RenderToTexturePassData::Reflect(context);
+            RenderToTexturePassRGBDData::Reflect(context);
+
 
             PassAsset::Reflect(context);
             PassTemplate::Reflect(context);
