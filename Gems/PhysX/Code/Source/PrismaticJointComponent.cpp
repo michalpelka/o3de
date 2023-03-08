@@ -156,4 +156,14 @@ namespace PhysX
         const physx::PxD6JointDrive drive(0.f , PX_MAX_F32, force, true);
         m_nativeD6Joint->setDrive(physx::PxD6Drive::eX, drive);
     };
+
+    AZStd::pair<AZ::Vector3, AZ::Vector3> PrismaticJointComponent::getWrench() const
+    {
+        const auto constraint = m_nativeD6Joint->getConstraint();
+        physx::PxVec3 linear{0.f};
+        physx::PxVec3 angular{0.f};
+        constraint->getForce(linear, angular);
+        return{PxMathConvert(linear), PxMathConvert(angular)};
+    }
+
 } // namespace PhysX

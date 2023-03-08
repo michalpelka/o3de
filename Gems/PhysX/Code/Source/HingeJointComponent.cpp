@@ -146,4 +146,13 @@ namespace PhysX
     {
         m_nativeJoint->setDriveForceLimit(force);
     }
+
+    AZStd::pair<AZ::Vector3, AZ::Vector3> HingeJointComponent::getWrench() const
+    {
+        const auto constraint = m_nativeJoint->getConstraint();
+        physx::PxVec3 linear{0.f};
+        physx::PxVec3 angular{0.f};
+        constraint->getForce(linear, angular);
+        return{PxMathConvert(linear), PxMathConvert(angular)};
+    }
 } // namespace PhysX

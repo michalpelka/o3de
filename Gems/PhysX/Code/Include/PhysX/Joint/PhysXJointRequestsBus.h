@@ -47,6 +47,11 @@ namespace PhysX
         //! Sets maximum motor force.
         //! @param force in Newtons (for prismatic joint) or Newton-meters (for hinge joint).
         virtual void SetMaximumForce(float force) = 0;
+
+        //! Get wrench (force and torque vector) from joint.
+        //! @returns pair of 3d vectors : force in Newtons and torque in Newton-meters.
+        virtual AZStd::pair<AZ::Vector3, AZ::Vector3> getWrench() const = 0;
+
     };
 
     using JointRequestBus = AZ::EBus<JointRequests>;

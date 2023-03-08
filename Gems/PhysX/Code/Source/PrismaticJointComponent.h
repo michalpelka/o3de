@@ -45,6 +45,7 @@ namespace PhysX
         void SetVelocity(float velocity) override;
         void SetMaximumForce(float force) override;
         AZStd::pair<float, float> GetLimits() const override;
+        AZStd::pair<AZ::Vector3, AZ::Vector3> getWrench() const override;
 
     private:
         bool TryCachePhysXD6Joint();
