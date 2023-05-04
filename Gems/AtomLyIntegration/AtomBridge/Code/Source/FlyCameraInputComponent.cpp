@@ -191,7 +191,7 @@ void FlyCameraInputComponent::OnTick(float deltaTime, AZ::ScriptTimePoint /*time
     const Ang3 newRotation = rotation + Ang3(DEG2RAD(invertedRotation.y), 0.f, DEG2RAD(invertedRotation.x)) * m_rotationSpeed;
     const AZ::Quaternion newOrientation = LYQuaternionToAZQuaternion(Quat(newRotation));
     worldTransform.SetRotation(newOrientation);
-
+    AZ_Printf("Debug Mouse", "%f %f %f %f %f; iRx : %f , iRy: %f,  rs : %f ms : %f", deltaTime,  worldTransform.GetRotation().GetW(),worldTransform.GetRotation().GetX(),worldTransform.GetRotation().GetY(),worldTransform.GetRotation().GetZ(), DEG2RAD(invertedRotation.x), DEG2RAD(invertedRotation.y), m_rotationSpeed, m_mouseSensitivity);
     AZ::TransformBus::Event(GetEntityId(), &AZ::TransformBus::Events::SetWorldTM, worldTransform);
 }
 
@@ -261,15 +261,19 @@ float Snap_s360(float val)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void FlyCameraInputComponent::OnMouseEvent(const InputChannel& inputChannel)
 {
+
     const InputChannelId& channelId = inputChannel.GetInputChannelId();
     if (channelId == InputDeviceMouse::Movement::X)
     {
         m_rotation.x = Snap_s360(inputChannel.GetValue() * m_mouseSensitivity);
+        AZ_Printf("FlyCameraInputComponent::OnMouseEvent::X", "%f %f",m_rotation.x, inputChannel.GetValue());
     }
     else if (channelId == InputDeviceMouse::Movement::Y)
     {
         m_rotation.y = Snap_s360(inputChannel.GetValue() * m_mouseSensitivity);
+        AZ_Printf("FlyCameraInputComponent::OnMouseEvent::Y", "%f %f",m_rotation.y, inputChannel.GetValue());
     }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
