@@ -239,7 +239,9 @@ namespace AzFramework
         const AZ::Vector2 newNormalizedPosition = GetSystemCursorPositionNormalized();
         m_inputDevice.m_cursorPositionData2D->m_normalizedPosition = newNormalizedPosition;
         m_inputDevice.m_cursorPositionData2D->m_normalizedPositionDelta = newNormalizedPosition - oldNormalizedPosition;
-
+        AZ_Printf("InputDeviceMouse::Implementation::ProcessRawEventQueues", "new_pos : %f %f, old_pos: %f, %f , delta : %f %f ", newNormalizedPosition.GetX(),newNormalizedPosition.GetY(),
+                  oldNormalizedPosition.GetX(),oldNormalizedPosition.GetY(),
+                  m_inputDevice.m_cursorPositionData2D->m_normalizedPositionDelta.GetX(), m_inputDevice.m_cursorPositionData2D->m_normalizedPositionDelta.GetY());
         // Process all raw input events that were queued since the last call to this function
         ProcessRawInputEventQueues(m_rawButtonEventQueuesById, m_inputDevice.m_buttonChannelsById);
         ProcessRawInputEventQueues(m_rawMovementEventQueuesById, m_inputDevice.m_movementChannelsById);

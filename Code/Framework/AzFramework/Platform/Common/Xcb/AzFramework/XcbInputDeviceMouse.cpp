@@ -400,6 +400,7 @@ namespace AzFramework
         AZ_Assert(xkbGeometryReply->height != 0, "xkbGeometry response height must be non-zero. (%d)", xkbGeometryReply->height);
         const float normalizedCursorPostionY = static_cast<float>(xkbQueryPointerReply->win_y) / xkbGeometryReply->height;
 
+        AZ_Printf("XcbInputDeviceMouse::GetSystemCursorPositionNormalizedInternal", "pointReply : %d %d geometry : %d %d ", (int)xkbQueryPointerReply->win_x, (int)xkbQueryPointerReply->win_y, (int)xkbGeometryReply->width, (int)xkbGeometryReply->height );
         position = AZ::Vector2(normalizedCursorPostionX, normalizedCursorPostionY);
 
         return position;
