@@ -21,7 +21,7 @@
 #include <Atom/RPI.Public/ViewportContextBus.h>
 
 #include <AzCore/Name/NameDictionary.h>
-
+#include <fstream>
 namespace AZ::Render
 {
     void StarsFeatureProcessor::Reflect(ReflectContext* context)
@@ -139,11 +139,24 @@ namespace AZ::Render
 
     void StarsFeatureProcessor::SetStars(const AZStd::vector<StarVertex>& starVertexData)
     {
-        const uint32_t elementCount = static_cast<uint32_t>(starVertexData.size());
-        const uint32_t elementSize = sizeof(StarVertex);
+        AZStd::vector<StarVertex> data;
+        //
+        std::ifstream file("/home/michalpelka/cloud2.txt");
+        while (!file.eof()){
+            StarVertex star;
+            file >> star.m_position[0] >> star.m_position[1] >> star.m_position[2];
+            float intensity;
+            file >> intensity;
+            uint8_t  intensity8 = static_cast<uint8_t>(intensity);
+            star.m_color = intensity8 | (intensity8 << 8) | (intensity8 << 16) | 0xFF000000;
+            data.push_back(star);
+        }
+
+        const uint32_t elementCount = static_cast<uint32_t>(data.size());
+        const uint32_t elementSize = sizeof(data);
         const uint32_t bufferSize = elementCount * elementSize; // bytecount
 
-        m_starsMeshData = starVertexData;
+        m_starsMeshData = data;
         m_numStarsVertices = elementCount;
 
         if (!m_starsVertexBuffer)
