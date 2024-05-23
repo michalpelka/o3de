@@ -210,7 +210,7 @@ namespace AZ::Render
                 layoutBuilder.AddBuffer()
                     ->Channel("POSITION", RHI::Format::R32G32B32_FLOAT)
                     ->Channel("COLOR", RHI::Format::R8G8B8A8_UNORM);
-                layoutBuilder.SetTopology(RHI::PrimitiveTopology::TriangleList);
+                layoutBuilder.SetTopology(RHI::PrimitiveTopology::PointList);
                 auto inputStreamLayout = layoutBuilder.End();
 
                 m_meshPipelineState->SetInputStreamLayout(inputStreamLayout);
@@ -218,7 +218,7 @@ namespace AZ::Render
                 m_meshPipelineState->Finalize();
 
                 UpdateDrawPacket();
-                UpdateBackgroundClearColor();
+                //UpdateBackgroundClearColor();
             }
         }
         else if (changeType == AZ::RPI::SceneNotification::RenderPipelineChangeType::PassChanged)
